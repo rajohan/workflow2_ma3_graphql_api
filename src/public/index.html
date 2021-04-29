@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Noroff GraphQL API</title>
+        <link rel="stylesheet" href="css/prism.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Noroff GraphQL API</h1>
+        </header>
+        <main>
+            <p>
+                This is a simple GraphQL API created to be used for Workflow 2 Module
+                Assignment 3.
+            </p>
+            <p>
+                The API has dummy posts/users where all the posts belongs to a specific
+                user. It exposes 2 graphql queries. Both queries accepts an ID to retrieve
+                a single post or user.
+            </p>
+            <p>
+                You can find the GraphQL Playground here:
+                <a href="http://localhost:4000/graphql">http://localhost:4000/graphql</a>
+            </p>
+            <h2>Examples</h2>
+
+            <h3>Get all posts</h3>
+            <pre>
+                <code class="language-graphql">
+    query {
+        posts {
+            id
+            title
+            body
+            image
+            createdAt
+        }
+    }
+                </code>
+            </pre>
+
+            <h3>Get a post by id</h3>
+            <pre>
+                <code class="language-graphql">
+    query {
+        posts(id: 1) {
+            id
+            title
+            body
+            image
+            createdAt
+        }
+    }
+                </code>
+            </pre>
+
+            <h3>Get author of a post</h3>
+            <pre>
+                <code class="language-graphql">
+    query {
+        posts(id: 1) {
+            id
+            title
+            body
+            image
+            createdAt
+            user {
+              id
+              username
+            }
+        }
+    }
+                </code>
+            </pre>
+
+            <h3>Get all users</h3>
+            <pre>
+                <code class="language-graphql">
+    query {
+        users {
+            id
+            username
+            email
+            firstName
+            lastName
+            createdAt
+        }
+    }
+                </code>
+            </pre>
+
+            <h3>Get a user by id</h3>
+            <pre>
+                <code class="language-graphql">
+    query {
+        users(id: 1) {
+            id
+            username
+            email
+            firstName
+            lastName
+            createdAt
+        }
+    }
+                </code>
+            </pre>
+
+            <h3>Get a user's posts</h3>
+            <pre>
+                <code class="language-graphql">
+    query {
+        users(id: 1) {
+            username
+            posts {
+                id
+                title
+                body
+                image
+                createdAt
+            }
+        }
+    }
+                </code>
+            </pre>
+        </main>
+        <footer>Copyright Noroff 2021</footer>
+        <script src="js/prism.js"></script>
+    </body>
+</html>
