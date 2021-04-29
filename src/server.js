@@ -14,7 +14,13 @@ const corsOptions = {
 
 const startServer = async () => {
     const app = express();
-    const server = new ApolloServer({ typeDefs, resolvers, playground: true });
+    const server = new ApolloServer({
+        typeDefs,
+        resolvers,
+        playground: true,
+        introspection: true,
+    });
+
     await server.start();
 
     server.applyMiddleware({ app, cors: corsOptions });
