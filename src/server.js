@@ -7,6 +7,11 @@ const { resolvers } = require("./resolvers");
 
 const port = process.env.PORT || 4000;
 
+const corsOptions = {
+    origin: "*",
+    credentials: true,
+};
+
 const startServer = async () => {
     const app = express();
     const server = new ApolloServer({
@@ -18,7 +23,7 @@ const startServer = async () => {
 
     await server.start();
 
-    server.applyMiddleware({ app });
+    server.applyMiddleware({ app, cors: corsOptions });
 
     app.use(express.static(path.join(__dirname, "/public")));
 
