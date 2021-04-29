@@ -5,6 +5,8 @@ const path = require("path");
 const { typeDefs } = require("./typeDefs");
 const { resolvers } = require("./resolvers");
 
+const port = process.env.PORT || 4000;
+
 const corsOptions = {
     origin: "*",
     credentials: true,
@@ -19,9 +21,9 @@ const startServer = async () => {
 
     app.use(express.static(path.join(__dirname, "/public")));
 
-    app.listen(4000, () => {
-        console.log("Server ready at http://localhost:4000");
-        console.log(`Graphql Playground http://localhost:4000${server.graphqlPath}`);
+    app.listen(port, () => {
+        console.log(`Server ready at http://localhost:${port}`);
+        console.log(`Graphql Playground http://localhost:${port}${server.graphqlPath}`);
     });
 };
 
